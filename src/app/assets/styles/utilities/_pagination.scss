@@ -1,0 +1,39 @@
+.p-paginator {
+    margin-top: 40px;
+
+    .p-paginator-rpp-options {
+        display: none;
+    }
+
+    .p-paginator-current {
+        display: none;
+    }
+
+    .p-paginator-pages {
+        margin: 0 30px;
+    }
+
+    .p-paginator-page {
+        border: 1px solid #d2dce0;
+        margin-inline-start: 6px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: var(--actions);
+            color: #fff;
+            border: 0;
+        }
+
+        &.p-highlight {
+            background-color: var(--actions);
+            color: #fff;
+            border: 0;
+        }
+    }
+
+    .p-link {
+        border: 1px solid #d2dce0;
+        margin-inline-start: 6px;
+        border-radius: 4px;
+    }
+}

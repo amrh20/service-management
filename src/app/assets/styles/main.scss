@@ -1,0 +1,14 @@
+// استيراد الأنماط الأساسية
+@use "./base/fonts";
+@use "./base/variables";
+@use "./base/general";
+@use "./base/mixins";
+
+// استيراد أنماط المكونات
+@use "./components/buttons";
+@use "./components/details-card";
+@use "./components/table";
+
+// استيراد الأدوات المساعدة
+@use "./utilities/pagination";
+@use "./utilities/status";

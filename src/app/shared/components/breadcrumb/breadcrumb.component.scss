@@ -1,0 +1,41 @@
+.breadcrumb {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin: 1rem 0;
+
+    &__list {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        display: inline;
+
+        &::after {
+            content: "/";
+            margin: 0 0.5rem;
+            color: var(--gray4);
+        }
+
+        &:last-child::after {
+            content: "";
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: var(--text-dark);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__current {
+        font-weight: bold;
+        color: var(--text-bold);
+    }
+}

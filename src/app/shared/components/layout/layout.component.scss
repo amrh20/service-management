@@ -1,0 +1,25 @@
+.layout {
+    display: flex;
+
+    &__side-menu {
+        width: 270px;
+        background-color: var(--primary);
+        height: 100vh;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 20%;
+            left: 0;
+            width: 100%;
+            height: 275px;
+            background-image: url("../../../assets/images/side_menu_pattern.svg");
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__content {
+        flex: 1;
+        padding: 28px;
+    }
+}
