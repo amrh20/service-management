@@ -36,6 +36,10 @@
     &__content {
         flex: 1;
         padding: 28px;
+        overflow-x: scroll;
+        @media (max-width: 420px) {
+            padding: 20px;
+        }
     }
     &__overlay {
         @media (max-width: 992px) {

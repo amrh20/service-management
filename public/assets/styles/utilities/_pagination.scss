@@ -1,16 +1,11 @@
 .p-paginator {
     margin-top: 40px;
 
-    .p-paginator-rpp-options {
-        display: none;
-    }
-
-    .p-paginator-current {
-        display: none;
-    }
-
     .p-paginator-pages {
         margin: 0 30px;
+        @media (max-width: 992px) {
+            margin: 0 5px;
+        }
     }
 
     .p-paginator-page {
