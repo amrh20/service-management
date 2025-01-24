@@ -16,7 +16,8 @@ export const routes: Routes = [
                 path: 'service-management',
                 loadChildren: () =>
                     import('./features/service-management/service-management.module').then(m => m.ServiceManagementModule),
-                data: { breadcrumb: 'Service Management' }
+                data: { breadcrumb: 'Service Management' },
+
             }
         ]
     },

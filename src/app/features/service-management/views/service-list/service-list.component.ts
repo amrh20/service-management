@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SearchBarComponent } from '../../../../shared/components/search-bar/search-bar.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
 
 @Component({
   selector: 'app-service-list',
-  imports: [TableComponent],
+  imports: [TableComponent, SearchBarComponent],
   templateUrl: './service-list.component.html',
   styleUrl: './service-list.component.scss',
   standalone: true,
 
 })
 export class ServiceListComponent implements OnInit {
+  @ViewChild(TableComponent) table!: TableComponent;
+
+
   serviceData: any[] = [];
   tableColumns: any[] = [
     { field: 'serviceName', header: 'Service Name' },
@@ -35,4 +39,12 @@ export class ServiceListComponent implements OnInit {
       { serviceName: 'Property Ownership', code: 'P-O2', type: 'Service Type', status: 'Inactive' }
     ];
   }
+
+
+  onSearch(filters: any): void {
+    // Pass the filters to the table component
+    this.table.onSearch(filters);
+  }
+
+
 }

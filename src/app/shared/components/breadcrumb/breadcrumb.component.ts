@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { RouterLink } from '@angular/router';
+import { BreadcrumbService } from '../../../core/services/breadcrumb.service';
 
 interface Breadcrumb {
   label: string;
@@ -18,43 +18,30 @@ interface Breadcrumb {
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor (private router: Router, private activatedRoute: ActivatedRoute) { }
+  isDropdownOpen = false;
 
-  ngOnInit() {
-    console.log('starttttt:');
 
-    this.router.events.subscribe((event: any) => {
-      console.log('Router Event:', event);
-    });
-    this.router.events
-      .pipe(
-        filter((event: any) => event instanceof NavigationEnd),
-        map(() => this.buildBreadcrumb(this.activatedRoute.root))
-      )
-      .subscribe((breadcrumbs: any) => {
-        console.log('Generated Breadcrumbs:', breadcrumbs);
-        this.breadcrumbs = breadcrumbs;
-      });
+
+  constructor (private breadcrumbService: BreadcrumbService) { }
+
+  ngOnInit(): void {
+    this.breadcrumbService.breadcrumbs$.subscribe(
+      (breadcrumbs: any) => (this.breadcrumbs = breadcrumbs)
+    );
   }
 
-  private buildBreadcrumb(route: ActivatedRoute, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {
-    const children: ActivatedRoute[] = route.children;
-
-    for (const child of children) {
-      const routeURL: string = child.snapshot.url.map((segment: any) => segment.path).join('/');
-      if (routeURL) {
-        url += `/${ routeURL }`;
-      }
-
-      const label = child.snapshot.data['breadcrumb'];
-      if (label) {
-        breadcrumbs.push({ label, url });
-      }
-
-      // Recursively add breadcrumbs for child routes
-      this.buildBreadcrumb(child, url, breadcrumbs);
-    }
-
-    return breadcrumbs;
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    console.log(" this.isDropdownOpen", this.isDropdownOpen)
   }
+
+  onProfile(): void {
+    this.isDropdownOpen = false;
+  }
+
+  onLogout(): void {
+    this.isDropdownOpen = false;
+  }
+
+
 }

@@ -1,6 +1,6 @@
 export const routesStrings = {
     dashboard: {
         serviceList: "service-list",
-        serviceDetails: 'service-details',
+        serviceDetails: 'service-details/:id',
     }
 }

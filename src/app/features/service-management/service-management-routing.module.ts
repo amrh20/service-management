@@ -7,11 +7,14 @@ import { ServiceListComponent } from './views/service-list/service-list.componen
 const routes: Routes = [
   {
     path: '',
-    component: ServiceListComponent, data: { breadcrumb: 'Service List' }
+    component: ServiceListComponent,
+    data: { breadcrumb: 'Service List' },
   },
   {
     path: routesStrings.dashboard.serviceDetails,
-    component: ServiceDetailsComponent, data: { breadcrumb: 'Service Details' }
+    component: ServiceDetailsComponent,
+    data: { breadcrumb: 'View Service Details' },
+
   }
 ];
 
