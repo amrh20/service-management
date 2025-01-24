@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BreadcrumbService } from '../../../core/services/breadcrumb.service';
 
@@ -18,9 +18,7 @@ interface Breadcrumb {
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs: Breadcrumb[] = [];
 
-  isDropdownOpen = false;
-
-
+  isDropdownOpen: boolean = false;
 
   constructor (private breadcrumbService: BreadcrumbService) { }
 
@@ -32,7 +30,6 @@ export class BreadcrumbComponent implements OnInit {
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
-    console.log(" this.isDropdownOpen", this.isDropdownOpen)
   }
 
   onProfile(): void {
@@ -41,6 +38,13 @@ export class BreadcrumbComponent implements OnInit {
 
   onLogout(): void {
     this.isDropdownOpen = false;
+  }
+
+  @Output() sideMenuStatus = new EventEmitter<any>();
+
+
+  openSideMenu() {
+    this.sideMenuStatus.emit(true)
   }
 
 

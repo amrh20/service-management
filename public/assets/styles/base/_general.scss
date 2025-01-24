@@ -9,4 +9,9 @@ body {
     margin: 0;
     font-family: "IBMPlexSans";
     font-size: 16px;
+    overflow-x: hidden;
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }
